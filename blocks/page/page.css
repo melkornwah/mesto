@@ -1,0 +1,21 @@
+.page {
+  max-width: 1280px;
+  background-color: black;
+  font-family: "Inter", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .page {
+    max-width: 900px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    max-width: 320px;
+    width: 320px;
+  }
+}
