@@ -1,0 +1,14 @@
+.profile__desc {
+  margin: 0;
+  padding: 0;
+  line-height: 1.57;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 600px) {
+  .profile__desc {
+    line-height: 1.21;
+    font-size: 14px;
+  }
+}

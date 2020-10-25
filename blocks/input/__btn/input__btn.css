@@ -1,0 +1,9 @@
+.input__btn {
+  background: black;
+  cursor: pointer;
+}
+
+.input__btn:hover {
+  opacity: 0.6;
+  transition: .5s;
+}
