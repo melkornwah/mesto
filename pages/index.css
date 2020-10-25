@@ -29,7 +29,4 @@
 @import url("../blocks/element/__desc/element__desc.css");
 @import url("../blocks/element/__name/element__name.css");
 
-
-div, img, header, section {
-  border: 1px solid red;
-}
+@import url("../blocks/footer/footer.css");
