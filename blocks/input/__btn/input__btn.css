@@ -7,3 +7,8 @@
   opacity: 0.6;
   transition: .5s;
 }
+
+.input__btn:focus {
+  outline: none;
+}
+
