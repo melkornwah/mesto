@@ -19,55 +19,70 @@
           <div class="profile__info">
             <div class="profile__header">
               <h2 class="profile__name">Жак-Ив Кусто</h2>
-              <button class="input__btn input__btn_action_edit"></button>
+              <button class="button button_action_edit"></button>
             </div>
             <p class="profile__desc">Исследователь океана</p>
           </div>
         </div>
-        <button class="input__btn input__btn_action_add"></button>
+        <button class="button button_action_add"></button>
       </section>
       <section class="elements">
         <div class="element">
           <img src="./images/photo__elbrus-mountain.jpg" alt="Гора Эльбрус" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Гора Эльбрус</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo__grand-case.jpg" alt="Гранд Кас" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Гранд Кас</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo__karachaevsk.jpg" alt="Карачаевск" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Карачаевск</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo__mojave-desert.jpg" alt="Пустыня Мохаве" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Пустыня Мохаве</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo__dombay.jpg" alt="Домбай" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Домбай</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
         </div>
         <div class="element">
           <img src="./images/photo__handies-peak.jpg" alt="Пик Хандис" class="element__photo">
           <div class="element__desc">
             <h3 class="element__name">Пик Хандис</h3>
-            <button class="input__btn input__btn_action_like"></button>
+            <button class="button button_action_like"></button>
           </div>
+        </div>
+      </section>
+      <section class="form form_hidden">
+        <div class="form__container">
+          <button class="button button_action_close"></button>
+          <form class="form__admin">
+            <h2 class="form__heading">Редактировать профиль</h2>
+            <fieldset class="form__input-container">
+              <input type="text" name="user" class="form__item" value="Жак-Ив Кусто" required>
+              <input type="text" name="description" class="form__item" value="Исследователь океана" required>
+            </fieldset>
+            <fieldset class="form__handlers">
+              <input type="submit" class="form__button button" value="Сохранить">
+            </fieldset>
+          </form>
         </div>
       </section>
     </main>

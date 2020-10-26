@@ -1,9 +1,9 @@
-.input__btn_action_like {
+.button_action_like {
   width: 21px;
   height: 18px;
   background: white;
   border: none;
-  background-image: url("../../../../images/btn_like.svg");
+  background-image: url("../../../images/btn_like.svg");
   align-self: center;
   margin-right: 17px;
 }

@@ -1,16 +1,16 @@
-.input__btn_action_edit {
+.button_action_edit {
   margin: 0 0 0 17px;
   padding: 0;
   width: 24px;
   height: 24px;
   align-self: center;
   border: none;
-  background-image: url("../../../../images/btn_edit.png");
+  background-image: url("../../../images/btn_edit.png");
   background-size: cover;
 }
 
 @media screen and (max-width: 600px) {
-  .input__btn_action_edit {
+  .button_action_edit {
     margin: 0 0 0 1px;
   }
 }

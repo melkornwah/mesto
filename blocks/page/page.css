@@ -6,6 +6,7 @@
   -moz-osx-font-smoothing: grayscale;
   margin: auto;
   color: white;
+  position: relative;
 }
 
 @media screen and (max-width: 900px) {

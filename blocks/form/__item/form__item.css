@@ -1,0 +1,11 @@
+.form__item {
+  width: 100%;
+  border: none;
+  border-bottom: rgba(0, 0, 0, .2) solid 1px;
+  margin-bottom: 30px;
+  padding-bottom: 13px;
+}
+
+.form__item:last-child {
+  margin: 0;
+}

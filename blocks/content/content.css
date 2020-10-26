@@ -2,6 +2,7 @@
   margin: 40px auto 0 auto;
   max-width: 882px;
   width: 100%;
+  position: relative;
 }
 
 @media screen and (max-width: 900px) {

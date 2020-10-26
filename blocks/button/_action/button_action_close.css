@@ -1,0 +1,12 @@
+.button_action_close {
+  background-image: url("../../../images/btn_close.png");
+  background-size: cover;
+  z-index: -1;
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  outline: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
