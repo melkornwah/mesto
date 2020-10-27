@@ -1,8 +1,18 @@
 .form__heading {
   margin: 0 0 0 36px;
   padding-top: 34px;
-  width: 330px;
+  max-width: 330px;
+  width: 100%;
   line-height: 2.07;
   font-size: 24px;
   font-weight: 900;
+}
+
+@media screen and (max-width: 600px) {
+  .form__heading {
+    margin: 25px auto 0 auto;
+    max-width: 238px;
+    line-height: 1.57;
+    font-size: 18px;
+  }
 }

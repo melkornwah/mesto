@@ -2,5 +2,13 @@
   border: none;
   padding: 0;
   margin: 54px auto 0 auto;
-  width: 358px;
+  max-width: 358px;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .form__input-container {
+    margin-top: 74px;
+    max-width: 238px;
+  }
 }
