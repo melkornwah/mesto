@@ -3,9 +3,7 @@
   max-width: 882px;
   width: 100%;
   color: #545454;
-  line-height: 1.57;
-  font-size: 18px;
-  font-weight: normal;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 900px) {

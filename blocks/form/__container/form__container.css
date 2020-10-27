@@ -1,12 +1,7 @@
 .form__container {
   position: relative;
-  top: 185px;
-  left: 50%;
-  transform: translate(-50%, 0);
   max-width: 430px;
-  max-height: 330px;
   width: 100%;
-  height: 100%;
   background-color: white;
   box-shadow: 0 0 25px rgba(0, 0, 0, .15);
   border-radius: 10px;
@@ -16,7 +11,5 @@
   .form__container {
     max-width:282px;
     max-height: 322px;
-    top: 110px;
-    left: 48.5%;
   }
 }

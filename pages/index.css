@@ -30,6 +30,9 @@
 @import url("../blocks/element/__desc/element__desc.css");
 @import url("../blocks/element/__name/element__name.css");
 
+@import url("../blocks/footer/footer.css");
+@import url("../blocks/footer/__copy/footer__copy.css");
+
 @import url("../blocks/form/form.css");
 @import url("../blocks/form/_hidden/form_hidden.css");
 @import url("../blocks/form/__container/form__container.css");
@@ -37,11 +40,4 @@
 @import url("../blocks/form/__heading/form__heading.css");
 @import url("../blocks/form/__input-container/form__input-container.css");
 @import url("../blocks/form/__item/form__item.css");
-@import url("../blocks/form/__handlers/form__handlers.css");
 @import url("../blocks/form/__button/form__button.css");
-
-@import url("../blocks/footer/footer.css");
-
-/*div, form, h2, label {
-  border: red 1px solid;
-}

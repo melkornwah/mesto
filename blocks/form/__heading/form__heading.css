@@ -1,6 +1,6 @@
 .form__heading {
-  margin: 0 0 0 36px;
-  padding-top: 34px;
+  margin: 0;
+  padding: 34px 0 0 36px;
   max-width: 330px;
   width: 100%;
   line-height: 2.07;
@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 600px) {
   .form__heading {
-    margin: 25px auto 0 auto;
+    padding: 25px 22px 0 22px;
     max-width: 238px;
     line-height: 1.57;
     font-size: 18px;

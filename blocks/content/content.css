@@ -3,6 +3,7 @@
   max-width: 882px;
   width: 100%;
   position: relative;
+  flex: 1;
 }
 
 @media screen and (max-width: 900px) {
