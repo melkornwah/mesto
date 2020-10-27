@@ -7,8 +7,14 @@ let profileJob = profileElement.querySelector(".profile__desc");
 let closeButton = document.querySelector(".button_action_close");
 let editButton = document.querySelector(".button_action_edit");
 
+let nameInput = formElement.querySelector(".form__item_el_name");
+let jobInput = formElement.querySelector(".form__item_el_job");
+
 function editProfile() {
   formElement.classList.remove("form_hidden");
+
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 function closeForm() {
@@ -18,11 +24,8 @@ function closeForm() {
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  let nameInput = formElement.querySelector('.form__input, [name="name"]').value;
-  let jobInput = formElement.querySelector('.form__input, [name="job"]').value;
-
-  profileName.textContent = nameInput;
-  profileJob.textContent = jobInput;
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
 
   closeForm();
 }
