@@ -12,6 +12,9 @@ let jobInput = formElement.querySelector(".form__item_el_job");
 
 function editProfile() {
   formElement.classList.remove("form_hidden");
+
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 function closeForm() {
@@ -26,9 +29,6 @@ function formSubmitHandler(evt) {
 
   closeForm();
 }
-
-nameInput.value = profileName.textContent;
-jobInput.value = profileJob.textContent;
 
 editButton.addEventListener("click", editProfile);
 closeButton.addEventListener("click", closeForm);
