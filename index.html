@@ -76,7 +76,7 @@
         © 2020 Владимир Чистый
       </p>
     </footer>
-    <div class="form form_hidden">
+    <div class="form form_type_edit-profile form_hidden">
       <div class="form__container">
         <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
         <form class="form__admin">
@@ -84,6 +84,19 @@
           <fieldset class="form__input-container">
             <input type="text" name="name" class="form__item form__item_el_name" placeholder="Ваше имя" value="" required>
             <input type="text" name="job" class="form__item form__item_el_job" placeholder="Ваш род деятельности" value="" required>
+          </fieldset>
+          <button type="submit" class="form__button button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="form form_type_add-place form_hidden">
+      <div class="form__container">
+        <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
+        <form class="form__admin">
+          <h2 class="form__heading">Новое место</h2>
+          <fieldset class="form__input-container">
+            <input type="text" name="place" class="form__item form__item_el_place" placeholder="Название" required>
+            <input type="text" name="image" class="form__item form__item_el_image" placeholder="Ссылка на картинку" required>
           </fieldset>
           <button type="submit" class="form__button button">Сохранить</button>
         </form>

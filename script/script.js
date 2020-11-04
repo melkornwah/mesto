@@ -1,14 +1,14 @@
-let formElement = document.querySelector(".form");
+const formElement = document.querySelector(".form");
 
-let profileElement = document.querySelector(".profile__info");
-let profileName = profileElement.querySelector(".profile__name");
-let profileJob = profileElement.querySelector(".profile__desc");
+const profileElement = document.querySelector(".profile__info");
+const profileName = profileElement.querySelector(".profile__name");
+const profileJob = profileElement.querySelector(".profile__desc");
 
-let closeButton = document.querySelector(".button_action_close");
-let editButton = document.querySelector(".button_action_edit");
+const closeButton = document.querySelector(".button_action_close");
+const editButton = document.querySelector(".button_action_edit");
 
-let nameInput = formElement.querySelector(".form__item_el_name");
-let jobInput = formElement.querySelector(".form__item_el_job");
+const nameInput = formElement.querySelector(".form__item_el_name");
+const jobInput = formElement.querySelector(".form__item_el_job");
 
 function editProfile() {
   formElement.classList.remove("form_hidden");
