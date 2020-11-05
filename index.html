@@ -19,12 +19,12 @@
           <div class="profile__info">
             <div class="profile__header">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button type="button" class="button button_action_edit" aria-label="Редактировать"></button>
+              <button type="button" class="button button_action_edit open-popup" aria-label="Редактировать"></button>
             </div>
             <p class="profile__desc">Исследователь океана</p>
           </div>
         </div>
-        <button type="button" class="button button_action_add" aria-label="Добавить"></button>
+        <button type="button" class="button button_action_add open-popup" aria-label="Добавить"></button>
       </section>
       <section class="elements">
         <div class="element">
@@ -76,7 +76,7 @@
         © 2020 Владимир Чистый
       </p>
     </footer>
-    <div class="form form_type_edit-profile form_hidden">
+    <div class="form form-profile form_hidden">
       <div class="form__container">
         <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
         <form class="form__admin">
@@ -85,11 +85,11 @@
             <input type="text" name="name" class="form__item form__item_el_name" placeholder="Ваше имя" value="" required>
             <input type="text" name="job" class="form__item form__item_el_job" placeholder="Ваш род деятельности" value="" required>
           </fieldset>
-          <button type="submit" class="form__button button">Сохранить</button>
+          <button type="submit" class="form__button submit-profile button">Сохранить</button>
         </form>
       </div>
     </div>
-    <div class="form form_type_add-place form_hidden">
+    <div class="form form-place form_hidden">
       <div class="form__container">
         <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
         <form class="form__admin">
@@ -98,10 +98,19 @@
             <input type="text" name="place" class="form__item form__item_el_place" placeholder="Название" required>
             <input type="text" name="image" class="form__item form__item_el_image" placeholder="Ссылка на картинку" required>
           </fieldset>
-          <button type="submit" class="form__button button">Сохранить</button>
+          <button type="submit" class="form__button submit-profile button">Создать</button>
         </form>
       </div>
     </div>
+    <template class="template_type_element">
+      <div class="element">
+        <img src="#" alt="#" class="element__photo">
+        <div class="element__desc">
+          <h2 class="element__name"></h2>
+          <button type="button" class="button button_action_like" aria-label="Понравилось"></button>
+        </div>
+      </div>
+    </template>
     <script src="./script/script.js"></script>
   </body>
 </html>
