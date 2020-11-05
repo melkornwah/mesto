@@ -8,7 +8,6 @@ const profileJob = profileInfo.querySelector(".profile__desc");
 const popUpButton = document.querySelectorAll(".open-popup");
 const closeButton = document.querySelectorAll(".button_action_close");
 const submitButton = document.querySelectorAll(".form__button");
-const likeButton = document.querySelector(".button_action_like");
 
 const nameInput = document.querySelector(".form__item_el_name");
 const jobInput = document.querySelector(".form__item_el_job");
@@ -16,7 +15,6 @@ const jobInput = document.querySelector(".form__item_el_job");
 const cardsSection = document.querySelector(".elements");
 
 const cardTemplate = document.querySelector(".template_type_el").content;
-
 
 const initialCards = [
   {
@@ -45,13 +43,18 @@ const initialCards = [
   }
 ];
 
-for (let i = 0; i < 6; i += 1) {
+for (i = 0; i < 6; i += 1) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector(".element__name").textContent = initialCards[i].name;
   cardElement.querySelector(".element__photo").src = initialCards[i].link;
+  cardElement.querySelector(".button_action_like").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("button_action_like_active");
+  })
 
   cardsSection.append(cardElement);
 }
+
+const likeButton = document.querySelectorAll(".button_action_like");
 
 function inputValueFiller() {
   nameInput.value = profileName.textContent;
