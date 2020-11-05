@@ -7,10 +7,11 @@ const profileJob = profileInfo.querySelector(".profile__desc");
 
 const popUpButton = document.querySelectorAll(".open-popup");
 const closeButton = document.querySelectorAll(".button_action_close");
-const submitButton = document.querySelectorAll(".form__button");
 
 const nameInput = document.querySelector(".form__item_el_name");
 const jobInput = document.querySelector(".form__item_el_job");
+const placeInput = document.querySelector(".form__item_el_place");
+const linkInput = document.querySelector(".form__item_el_image");
 
 const cardsSection = document.querySelector(".elements");
 
@@ -45,6 +46,7 @@ const initialCards = [
 
 for (i = 0; i < 6; i += 1) {
   const cardElement = cardTemplate.cloneNode(true);
+
   cardElement.querySelector(".element__name").textContent = initialCards[i].name;
   cardElement.querySelector(".element__photo").src = initialCards[i].link;
   cardElement.querySelector(".button_action_like").addEventListener("click", function (evt) {
@@ -88,6 +90,23 @@ function closeForm() {
   })
 }
 
+function addCard () {
+  const newCard = cardTemplate.cloneNode(true);
+
+  newCard.querySelector(".element__name").textContent = placeInput.value;
+  newCard.querySelector(".element__photo").src = linkInput.value;
+  newCard.querySelector(".button_action_like").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("button_action_like_active");
+  })
+
+  placeInput.value = "";
+  linkInput.value = "";
+
+  cardsSection.prepend(newCard);
+}
+
+const submitButton = document.querySelectorAll(".form__button");
+
 function formSubmitHandler() {
   submitButton.forEach(function (el) {
     el.addEventListener("click", function (evt) {
@@ -97,6 +116,12 @@ function formSubmitHandler() {
         profileJob.textContent = jobInput.value;
 
         formProfile.classList.add("form_hidden");
+      }
+      else if (formPlace.classList.contains("form_hidden") === false) {
+        addCard();
+
+        formPlace.classList.add("form_hidden");
+        console.log("add");
       }
     })
   })
