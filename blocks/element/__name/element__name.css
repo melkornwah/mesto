@@ -1,5 +1,6 @@
 .element__name {
   margin: 0 0 0 21px;
+  max-width: 220px;
   align-self: center;
   padding: 0;
   line-height: 2.07;

@@ -8,9 +8,50 @@ const profileJob = profileInfo.querySelector(".profile__desc");
 const popUpButton = document.querySelectorAll(".open-popup");
 const closeButton = document.querySelectorAll(".button_action_close");
 const submitButton = document.querySelectorAll(".form__button");
+const likeButton = document.querySelector(".button_action_like");
 
 const nameInput = document.querySelector(".form__item_el_name");
 const jobInput = document.querySelector(".form__item_el_job");
+
+const cardsSection = document.querySelector(".elements");
+
+const cardTemplate = document.querySelector(".template_type_el").content;
+
+
+const initialCards = [
+  {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+for (let i = 0; i < 6; i += 1) {
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector(".element__name").textContent = initialCards[i].name;
+  cardElement.querySelector(".element__photo").src = initialCards[i].link;
+
+  cardsSection.append(cardElement);
+}
 
 function inputValueFiller() {
   nameInput.value = profileName.textContent;
@@ -32,7 +73,7 @@ function openForm() {
 }
 
 function closeForm() {
-  closeButton.forEach(function(el) {
+  closeButton.forEach(function (el) {
     el.addEventListener("click", function () {
       if (formProfile.classList.contains("form_hidden") === false) {
         formProfile.classList.add("form_hidden");
@@ -45,8 +86,8 @@ function closeForm() {
 }
 
 function formSubmitHandler() {
-  submitButton.forEach(function(el) {
-    el.addEventListener("click", function(evt) {
+  submitButton.forEach(function (el) {
+    el.addEventListener("click", function (evt) {
       evt.preventDefault();
       if (formProfile.classList.contains("form_hidden") === false) {
         profileName.textContent = nameInput.value;
