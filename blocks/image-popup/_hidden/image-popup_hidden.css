@@ -1,0 +1,5 @@
+.image-popup_hidden {
+  display: none;
+  opacity: 0;
+  transition: visibility .2s, opacity .2s linear;
+}
