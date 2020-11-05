@@ -47,10 +47,15 @@ const initialCards = [
 for (i = 0; i < 6; i += 1) {
   const cardElement = cardTemplate.cloneNode(true);
 
+  const card = cardElement.querySelector(".element");
+
   cardElement.querySelector(".element__name").textContent = initialCards[i].name;
   cardElement.querySelector(".element__photo").src = initialCards[i].link;
   cardElement.querySelector(".button_action_like").addEventListener("click", function (evt) {
     evt.target.classList.toggle("button_action_like_active");
+  })
+  cardElement.querySelector(".button_action_delete").addEventListener("click", function(evt) {
+    card.remove();
   })
 
   cardsSection.append(cardElement);
@@ -93,10 +98,15 @@ function closeForm() {
 function addCard () {
   const newCard = cardTemplate.cloneNode(true);
 
+  const cardBody = newCard.querySelector(".element")
+
   newCard.querySelector(".element__name").textContent = placeInput.value;
   newCard.querySelector(".element__photo").src = linkInput.value;
   newCard.querySelector(".button_action_like").addEventListener("click", function (evt) {
     evt.target.classList.toggle("button_action_like_active");
+  })
+  newCard.querySelector(".button_action_delete").addEventListener("click", function(evt) {
+    cardBody.remove();
   })
 
   placeInput.value = "";
