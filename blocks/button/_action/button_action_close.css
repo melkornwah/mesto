@@ -3,8 +3,8 @@
   background-size: cover;
   z-index: 2;
   position: absolute;
-  top: -45px;
-  right: -45px;
+  top: -50px;
+  right: -50px;
   outline: none;
   border: none;
   width: 57px;
@@ -15,7 +15,7 @@
   .button_action_close {
     width: 38px;
     height: 38px;
-    top: -30px;
-    right: -30px;
+    top: -35px;
+    right: -35px;
   }
 }
