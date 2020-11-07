@@ -53,13 +53,13 @@
           <h2 class="form__heading">Новое место</h2>
           <fieldset class="form__input-container">
             <input type="text" name="place" class="form__item form__item_el_place" placeholder="Название" required>
-            <input type="text" name="image" class="form__item form__item_el_image" placeholder="Ссылка на картинку" required>
+            <input type="url" name="image" class="form__item form__item_el_image" placeholder="Ссылка на картинку" required>
           </fieldset>
           <button type="submit" class="form__button submit-profile button">Создать</button>
         </form>
       </div>
     </div>
-    <div class="popup popup_hidden">
+    <div class="popup popup_hidden image-popup">
       <div class="image-container">
         <img src="#" alt="#" class="image-container__photo">
         <h2 class="image-container__title"></h2>
@@ -69,7 +69,7 @@
     <template class="template template_type_el">
       <ul class="element">
         <li>
-          <img src="#" alt="#" class="element__photo">
+          <img src="#" alt="#" class="element__photo open-popup">
         </li>
         <li>
           <div class="element__desc">
