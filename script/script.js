@@ -75,8 +75,6 @@ for (i = 0; i < 6; i += 1) {
   cardsSection.append(cardElement);
 }
 
-
-
 function openImagePopUp () {
   cardImage.forEach(function (el) {
     const imagePopUpPhoto = document.querySelector(".image-container__photo");

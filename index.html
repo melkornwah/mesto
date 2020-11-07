@@ -33,7 +33,7 @@
         © 2020 Владимир Чистый
       </p>
     </footer>
-    <div class="form form-profile form_hidden">
+    <div class="form form-profile popup popup_hidden">
       <div class="form__container">
         <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
         <form class="form__admin">
@@ -46,7 +46,7 @@
         </form>
       </div>
     </div>
-    <div class="form form-place form_hidden">
+    <div class="form form-place popup popup_hidden">
       <div class="form__container">
         <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
         <form class="form__admin">
@@ -59,7 +59,7 @@
         </form>
       </div>
     </div>
-    <div class="image-popup image-popup_hidden">
+    <div class="popup popup_hidden">
       <div class="image-container">
         <img src="#" alt="#" class="image-container__photo">
         <h2 class="image-container__title"></h2>
@@ -67,14 +67,20 @@
       </div>
     </div>
     <template class="template template_type_el">
-      <div class="element">
-        <img src="#" alt="#" class="element__photo">
-        <div class="element__desc">
-          <h2 class="element__name"></h2>
-          <button type="button" class="button button_action_like" aria-label="Понравилось"></button>
-        </div>
-        <button type="button" class="button button_action_delete" aria-label="Удалить"></button>
-      </div>
+      <ul class="element">
+        <li>
+          <img src="#" alt="#" class="element__photo">
+        </li>
+        <li>
+          <div class="element__desc">
+            <h2 class="element__name"></h2>
+            <button type="button" class="button button_action_like" aria-label="Понравилось"></button>
+          </div>
+        </li>
+        <li>
+          <button type="button" class="button button_action_delete" aria-label="Удалить"></button>
+        </li>
+      </ul>
     </template>
     <script src="./script/script.js"></script>
   </body>
