@@ -26,6 +26,7 @@
 @import url("../blocks/profile/__desc/profile__desc.css");
 
 @import url("../blocks/elements/elements.css");
+@import url("../blocks/elements/__list/elements__list.css");
 @import url("../blocks/element/element.css");
 @import url("../blocks/element/__photo/element__photo.css");
 @import url("../blocks/element/__desc/element__desc.css");
