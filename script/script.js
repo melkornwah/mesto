@@ -53,12 +53,17 @@ const initialCards = [
   }
 ];
 
+function inputValueFiller() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
 function openPopUp(popup) {
   popup.classList.add("popup_is-opened");
 }
 
-function closePopUp(button) {
-  button.parentElement.parentElement.classList.remove("popup_is-opened");
+function closePopUp(popup) {
+  popup.classList.remove("popup_is-opened");
 }
 
 function createCard(name, link) {
@@ -94,11 +99,6 @@ function addCard(container, element) {
   container.prepend(element);
 }
 
-function inputValueFiller() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-}
-
 function profileSubmitHandler(evt) {
   evt.preventDefault();
 
@@ -118,10 +118,6 @@ function placeSubmitHandler(evt) {
   closePopUp(formPlace);
 }
 
-initialCards.forEach(function (card) {
-  addCard(cardList, createCard(card.name, card.link));
-});
-
 profileSubmitButton.addEventListener("click", profileSubmitHandler);
 placeSubmitButton.addEventListener("click", placeSubmitHandler);
 addButton.addEventListener("click", function() {
@@ -131,4 +127,17 @@ editButton.addEventListener("click", function() {
   openPopUp(formProfile);
 
   inputValueFiller();
+});
+closeProfileButton.addEventListener("click", function() {
+  closePopUp(formProfile);
+});
+closePlaceButton.addEventListener("click", function() {
+  closePopUp(formPlace);
+})
+closeImageButton.addEventListener("click", function() {
+  closePopUp(imagePopUp);
+})
+
+initialCards.forEach(function (card) {
+  addCard(cardList, createCard(card.name, card.link));
 });
