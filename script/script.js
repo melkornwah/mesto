@@ -19,10 +19,10 @@ const jobInput = document.querySelector(".form__item_el_job");
 const placeInput = document.querySelector(".form__item_el_place");
 const linkInput = document.querySelector(".form__item_el_link");
 
-const cardList = document.querySelector(".elements__list");
-
 const imagePopUpPhoto = imagePopUp.querySelector(".image-container__photo");
 const imagePopUpName = imagePopUp.querySelector(".image-container__title");
+
+const cardList = document.querySelector(".elements__list");
 
 const cardTemplate = document.querySelector(".template_type_el").content;
 
@@ -53,6 +53,14 @@ const initialCards = [
   }
 ];
 
+function openPopUp(popup) {
+  popup.classList.add("popup_is-opened");
+}
+
+function closePopUp(button) {
+  button.parentElement.parentElement.classList.remove("popup_is-opened");
+}
+
 function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
   const element = cardElement.querySelector(".element");
@@ -66,12 +74,18 @@ function createCard(name, link) {
   cardName.textContent = name;
   cardLink.src = link;
   cardLink.alt = name;
+  cardLink.addEventListener("click", function() {
+    openPopUp(imagePopUp);
+
+    imagePopUpName.textContent = name;
+    imagePopUpPhoto.src = link;
+  });
   deleteButton.addEventListener("click", function() {
     element.remove();
-  })
+  });
   likeButton.addEventListener("click", function(evt) {
     evt.target.classList.toggle("button_action_like_active");
-  })
+  });
 
   return element;
 }
@@ -80,19 +94,9 @@ function addCard(container, element) {
   container.prepend(element);
 }
 
-function imagePopUpFiller(el) {
-  imagePopUpPhoto.alt = el.alt;
-  imagePopUpPhoto.src = el.src;
-  imagePopUpName.textContent = el.alt;
-}
-
 function inputValueFiller() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-}
-
-function closePopUp(button) {
-  button.parentElement.parentElement.classList.remove("popup_is-opened");
 }
 
 function profileSubmitHandler(evt) {
@@ -114,15 +118,9 @@ function placeSubmitHandler(evt) {
   formPlace.classList.add("popup_hidden");
 }
 
-function openPopUp(popup) {
-  popup.classList.add("popup_is-opened");
-}
-
 initialCards.forEach(function (card) {
   addCard(cardList, createCard(card.name, card.link));
 });
-
-const imageButton = document.querySelectorAll(".element__photo");
 
 profileSubmitButton.addEventListener("click", profileSubmitHandler);
 placeSubmitButton.addEventListener("click", placeSubmitHandler);
