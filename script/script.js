@@ -105,7 +105,7 @@ function profileSubmitHandler(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
 
-  formProfile.classList.add("popup_hidden");
+  closePopUp(formProfile);
 }
 
 function placeSubmitHandler(evt) {
@@ -115,7 +115,7 @@ function placeSubmitHandler(evt) {
 
   formPlace.querySelector(".form__admin").reset();
 
-  formPlace.classList.add("popup_hidden");
+  closePopUp(formPlace);
 }
 
 initialCards.forEach(function (card) {
