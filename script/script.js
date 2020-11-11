@@ -91,8 +91,8 @@ function inputValueFiller() {
   jobInput.value = profileJob.textContent;
 }
 
-function closePopUp(el) {
-  el.parentElement.parentElement.classList.add("popup_hidden");
+function closePopUp(button) {
+  button.parentElement.parentElement.classList.remove("popup_is-opened");
 }
 
 function profileSubmitHandler(evt) {
@@ -115,7 +115,7 @@ function placeSubmitHandler(evt) {
 }
 
 function openPopUp(popup) {
-  popup.classList.remove("popup_hidden");
+  popup.classList.add("popup_is-opened");
 }
 
 initialCards.forEach(function (card) {
