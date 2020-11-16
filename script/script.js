@@ -53,6 +53,10 @@ const initialCards = [
   }
 ];
 
+const loadInitialCards = (card) => {
+  addCard(cardList, createCard(card.name, card.link));
+}
+
 function inputValueFiller() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
@@ -138,6 +142,4 @@ closeImageButton.addEventListener("click", function() {
   closePopUp(imagePopUp);
 })
 
-initialCards.forEach(function (card) {
-  addCard(cardList, createCard(card.name, card.link));
-});
+initialCards.forEach(loadInitialCards);
