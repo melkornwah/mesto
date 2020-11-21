@@ -9,6 +9,7 @@
   font-size: 18px;
   font-weight: normal;
   border-radius: 2px;
+  border: 1px solid black;
 }
 
 .form__button:hover {

@@ -1,14 +1,18 @@
-.form__item {
+.form__input {
   width: 100%;
   border: none;
   border-bottom: rgba(0, 0, 0, .2) solid 1px;
-  margin-bottom: 30px;
+  margin: 0 0 5px 0;
   padding-bottom: 13px;
   line-height: 1.21;
   font-size: 14px;
   font-weight: normal;
 }
 
-.form__item:last-child {
-  margin: 0;
+.form__input:focus {
+  outline: none;
+}
+
+.form__input:last-of-type {
+  margin: 13px 0 5px 0;
 }
