@@ -1,4 +1,4 @@
-.popup_is-opened {
+.modal_is-opened {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity .2s linear;

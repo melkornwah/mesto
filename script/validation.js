@@ -45,12 +45,23 @@ const setInitialButtonState = (object, popup, buttonElement) => {
   if (popup === formProfile) {
     buttonElement.classList.remove(object.inactiveButtonClass);
   }
+  else {
+    buttonElement.classList.add(object.inactiveButtonClass);
+  }
 };
 
 const setInitialValidity = (object, popup, inputElement) => {
   if (popup === formProfile) {
     hideInputError(object, popup, inputElement);
   }
+  else {
+    hideInputError(object, popup, inputElement);
+  }
+};
+
+const setInitialStates = (object, popup, inputElement, buttonElement) => {
+  setInitialValidity(object, popup, inputElement);
+  setInitialButtonState(object, popup, buttonElement);
 };
 
 const setEventListeners = (object, formElement) => {
@@ -65,8 +76,10 @@ const setEventListeners = (object, formElement) => {
       toggleButtonState(object, inputList, buttonElement);
     });
     editButton.addEventListener("click", function () {
-      setInitialValidity(object, formElement, inputElement);
-      setInitialButtonState(object, formElement, buttonElement);
+      setInitialStates(object, formElement, inputElement, buttonElement);
+    });
+    formPlace.addEventListener("reset", function () {
+      setInitialStates(object, formElement, inputElement, buttonElement);
     });
   });
 };
@@ -84,10 +97,10 @@ const enableValidation = (object) => {
 };
 
 enableValidation({
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__button",
-  inactiveButtonClass: "form__button_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active"
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active"
 });

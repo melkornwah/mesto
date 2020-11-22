@@ -36,45 +36,47 @@
         © 2020 Владимир Чистый
       </p>
     </footer>
-    <form class="form popup" name="profile" novalidate>
-      <div class="form__container">
-        <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
-        <div class="form__admin">
-          <h2 class="form__heading">Редактировать профиль</h2>
-          <fieldset class="form__input-container">
-            <input type="text" name="name" class="form__input" id="name-input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
-            <span class="form__input-error" id="name-input-error"></span>
-            <input type="text" name="job" class="form__input" id="job-input" placeholder="Ваш род деятельности" minlength="2" maxlength="200" required>
-            <span class="form__input-error" id="job-input-error"></span>
-          </fieldset>
-          <button type="submit" name="submit" class="form__button button">Сохранить</button>
+    <div class="popup">
+      <form class="modal popup__form" name="profile" novalidate>
+        <div class="popup__container">
+          <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
+          <div class="popup__admin">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <fieldset class="popup__input-container">
+              <input type="text" name="name" class="popup__input" id="name-input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+              <span class="popup__input-error" id="name-input-error"></span>
+              <input type="text" name="job" class="popup__input" id="job-input" placeholder="Ваш род деятельности" minlength="2" maxlength="200" required>
+              <span class="popup__input-error" id="job-input-error"></span>
+            </fieldset>
+            <button type="submit" name="submit" class="popup__button button">Сохранить</button>
+          </div>
         </div>
-      </div>
-      <div class="popup__overlay"></div>
-    </form>
-    <form class="form popup" name="place" novalidate>
-      <div class="form__container">
-        <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
-        <div class="form__admin">
-          <h2 class="form__heading">Новое место</h2>
-          <fieldset class="form__input-container">
-            <input type="text" name="title" class="form__input" id="title-input" placeholder="Название" required>
-            <span class="form__input-error" id="title-input-error"></span>
-            <input type="url" name="link" class="form__input" id="link-input" placeholder="Ссылка на картинку" required>
-            <span class="form__input-error" id="link-input-error"></span>
-          </fieldset>
-          <button type="submit" name="submit" class="form__button button">Создать</button>
+        <div class="popup__overlay"></div>
+      </form>
+      <form class=" modal popup__form" name="place" novalidate>
+        <div class="popup__container">
+          <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
+          <div class="popup__admin">
+            <h2 class="popup__heading">Новое место</h2>
+            <fieldset class="popup__input-container">
+              <input type="text" name="title" class="popup__input" id="title-input" placeholder="Название" required>
+              <span class="popup__input-error" id="title-input-error"></span>
+              <input type="url" name="link" class="popup__input" id="link-input" placeholder="Ссылка на картинку" required>
+              <span class="popup__input-error" id="link-input-error"></span>
+            </fieldset>
+            <button type="submit" name="submit" class="popup__button button">Создать</button>
+          </div>
         </div>
+        <div class="popup__overlay"></div>
+      </form>
+      <div class="popup__image modal">
+        <div class="image-container">
+          <img src="#" alt="#" class="image-container__photo">
+          <h2 class="image-container__title"></h2>
+          <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
+        </div>
+        <div class="popup__overlay"></div>
       </div>
-      <div class="popup__overlay"></div>
-    </form>
-    <div class="popup image-popup">
-      <div class="image-container">
-        <img src="#" alt="#" class="image-container__photo">
-        <h2 class="image-container__title"></h2>
-        <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
-      </div>
-      <div class="popup__overlay"></div>
     </div>
     <template class="template template_type_el">
       <li class="element">
@@ -86,6 +88,7 @@
         <button type="button" class="button button_action_delete" aria-label="Удалить"></button>
       </li>
     </template>
+    <script src="./script/initial-cards.js"></script>
     <script src="./script/script.js"></script>
     <script src="./script/validation.js"></script>
   </body>
