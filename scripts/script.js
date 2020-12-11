@@ -23,7 +23,7 @@ class Card {
     this._title = place;
     this._image = link;
     this._templateSelector = templateSelector;
-  }
+  };
 
   _getCardElement() {
     this._element = document
@@ -32,15 +32,15 @@ class Card {
       .cloneNode(true);
 
     return this._element;
-  }
+  };
 
   _handleLikeButton(evt) {
     evt.target.classList.toggle("button_action_like_active");
-  }
+  };
 
   _handleDeleteButton(evt) {
     evt.target.parentElement.remove();
-  }
+  };
 
   _handleImagePopup(evt) {
 
@@ -54,7 +54,7 @@ class Card {
     imagePopUpName.textContent = evt.target.alt;
     imagePopUpPhoto.alt = evt.target.alt;
     imagePopUpPhoto.src = evt.target.src;
-  }
+  };
 
   _setEventListeners(cardPhoto) {
     this._element.querySelector(".button_action_like").addEventListener("click", (evt) => {
@@ -62,11 +62,11 @@ class Card {
     });
     this._element.querySelector(".button_action_delete").addEventListener("click", (evt) => {
       this._handleDeleteButton(evt);
-    })
+    });
     cardPhoto.addEventListener("click", (evt) => {
       this._handleImagePopup(evt);
-    })
-  }
+    });
+  };
 
   generateCard() {
     this._getCardElement();
@@ -80,7 +80,7 @@ class Card {
     this._setEventListeners(cardPhoto);
 
     return this._element;
-  }
+  };
 };
 
 const createCard = (place, link) => {
