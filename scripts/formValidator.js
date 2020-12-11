@@ -1,5 +1,3 @@
-const formList = Array.from(document.querySelectorAll(".popup__form"));
-
 class FormValidator {
   constructor(object, formElement) {
     this._formElement = formElement;
@@ -27,11 +25,11 @@ class FormValidator {
   };
 
   _checkInputValidity(inputElement) {
-    if (!inputElement.validity.valid) {
-      this._showInputError(inputElement);
+    if (inputElement.validity.valid) {
+      this._hideInputError(inputElement);
     }
     else {
-      this._hideInputError(inputElement);
+      this._showInputError(inputElement);
     }
   };
 
@@ -51,12 +49,12 @@ class FormValidator {
   };
 
   _setInitialButtonState(popup) {
-    if (popup === formProfile) {
+    if (popup.classList.contains("popup__form_type_profile")) {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
     }
     else {
       this._buttonElement.classList.add(this._inactiveButtonClass);
-    }
+    };
   };
 
   _setInitialValidity(inputElement) {
@@ -77,10 +75,7 @@ class FormValidator {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
       })
-      editButton.addEventListener("click", () => {
-        this._setInitialStates(inputElement, this._formElement);
-      })
-      formPlace.addEventListener("reset", () => {
+      this._formElement.addEventListener("reset", () => {
         this._setInitialStates(inputElement, this._formElement);
       });
     });
@@ -95,8 +90,4 @@ class FormValidator {
   };
 };
 
-formList.forEach((formElement) => {
-  const formValidator = new FormValidator(validationConfig, formElement);
-
-  formValidator.enableValidation();
-});
+export default FormValidator;
