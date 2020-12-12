@@ -1,7 +1,7 @@
 class Card {
-  constructor(place, link, templateSelector) {
-    this._title = place;
-    this._image = link;
+  constructor(data, templateSelector) {
+    this._title = data.place;
+    this._image = data.link;
     this._templateSelector = templateSelector;
   };
 

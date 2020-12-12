@@ -25,13 +25,6 @@ const linkInput = formPlace.querySelector("#link-input");
 
 const cardList = document.querySelector(".elements__list");
 
-const createCard = (place, link) => {
-  const card = new Card (place, link, ".template_type_el")
-  const cardElement = card.generateCard();
-
-  cardList.prepend(cardElement);
-}
-
 const closePopUpByEsc = (evt, popup) => {
   if (evt.key === "Escape") {
     closePopUp(popup);
@@ -90,7 +83,7 @@ const handleProfileSubmit = (evt) => {
 const handlePlaceSubmit = (evt) => {
   evt.preventDefault();
 
-  createCard(placeInput.value, linkInput.value);
+  createCard(createCardArray(placeInput.value, linkInput.value));
 
   formPlace.reset();
 
@@ -111,6 +104,20 @@ const handleImagePopup = (evt) => {
   imagePopUpPhoto.src = evt.target.src;
 };
 
+const createCardArray = (place, link) => {
+  return {
+    place,
+    link
+  };
+};
+
+const createCard = (data) => {
+  const card = new Card (data, ".template_type_el")
+  const cardElement = card.generateCard();
+
+  cardList.prepend(cardElement);
+}
+
 cardList.addEventListener("click", (evt) => {
   if (evt.target.classList.contains("element__photo")) {
     handleImagePopup(evt);
@@ -128,8 +135,8 @@ editButton.addEventListener("click", function() {
 });
 
 initialCards.forEach((item) => {
-    createCard(item.place, item.link);
-})
+  createCard(createCardArray(item.place, item.link));
+});
 
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(validationConfig, formElement);
