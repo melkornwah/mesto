@@ -40,7 +40,7 @@ class FormValidator {
   };
 
   _toggleButtonState() {
-    if (this._hasInvalidInput) {
+    if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
     }
     else {
@@ -48,21 +48,16 @@ class FormValidator {
     }
   };
 
-  _setInitialButtonState(popup) {
-    if (popup.classList.contains("popup__form_type_profile")) {
-      this._buttonElement.classList.remove(this._inactiveButtonClass);
-    }
-    else {
-      this._buttonElement.classList.add(this._inactiveButtonClass);
-    };
+  _setInitialButtonState() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
   };
 
   _setInitialValidity(inputElement) {
     this._hideInputError(inputElement);
   };
 
-  _setInitialStates(inputElement, popup) {
-    this._setInitialButtonState(popup);
+  _setInitialStates(inputElement) {
+    this._setInitialButtonState();
     this._setInitialValidity(inputElement);
   };
 
@@ -76,7 +71,7 @@ class FormValidator {
         this._toggleButtonState();
       })
       this._formElement.addEventListener("reset", () => {
-        this._setInitialStates(inputElement, this._formElement);
+        this._setInitialStates(inputElement);
       });
     });
   };

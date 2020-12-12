@@ -6,12 +6,11 @@ class Card {
   };
 
   _getCardElement() {
-    this._element = document
+    return this._element = document
       .querySelector(this._templateSelector)
       .content
+      .querySelector(".element")
       .cloneNode(true);
-
-    return this._element;
   };
 
   _handleLikeButton(evt) {
@@ -20,6 +19,7 @@ class Card {
 
   _handleDeleteButton(evt) {
     evt.target.parentElement.remove();
+    this._element = null;
   };
 
   _setEventListeners(cardPhoto) {
@@ -32,7 +32,7 @@ class Card {
   };
 
   generateCard() {
-    this._getCardElement();
+    this._element = this._getCardElement();
 
     const cardPhoto = this._element.querySelector(".element__photo");
 
