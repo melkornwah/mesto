@@ -1,8 +1,9 @@
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleImagePopup) {
     this._title = data.place;
     this._image = data.link;
     this._templateSelector = templateSelector;
+    this._handleImagePopup = handleImagePopup;
   };
 
   _getCardElement() {
@@ -28,6 +29,9 @@ class Card {
     });
     this._element.querySelector(".button_action_delete").addEventListener("click", (evt) => {
       this._handleDeleteButton(evt);
+    });
+    this._element.querySelector(".element__photo").addEventListener("click", () => {
+      this._handleImagePopup(this._title, this._image);
     });
   };
 

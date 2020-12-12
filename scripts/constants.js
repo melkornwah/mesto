@@ -7,4 +7,6 @@ const validationConfig = {
   errorClass: "popup__input-error_active"
 };
 
-export default validationConfig;
+const ESC_KEY = "Escape";
+
+export {validationConfig, ESC_KEY};
