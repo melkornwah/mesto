@@ -19,7 +19,7 @@ class Card {
   };
 
   _handleDeleteButton(evt) {
-    evt.target.parentElement.remove();
+    this._element.remove();
     this._element = null;
   };
 

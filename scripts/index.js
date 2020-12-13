@@ -30,13 +30,13 @@ const imagePopUp = document.querySelector(".popup__image");
 const imagePopUpPhoto = imagePopUp.querySelector(".image-container__photo");
 const imagePopUpName = imagePopUp.querySelector(".image-container__title");
 
-const closePopUpByEsc = (evt, popup) => {
+const closePopUpByEsc = (evt) => {
   if (evt.key === ESC_KEY) {
     closePopUp(popup);
   }
 };
 
-const closePopUpByOverlay = (evt, popup) => {
+const closePopUpByOverlay = (evt) => {
   if (evt.target.classList.contains("button_action_close") ||
   evt.target.classList.contains("popup__overlay")) {
     closePopUp(popup);
@@ -78,7 +78,7 @@ const handleProfileSubmit = (evt) => {
 const handlePlaceSubmit = (evt) => {
   evt.preventDefault();
 
-  cardList.prepend(createCard(createCardArray(placeInput.value, linkInput.value)));
+  cardList.prepend(createCard(createCardObject(placeInput.value, linkInput.value)));
 
   formPlace.reset();
 
@@ -93,7 +93,7 @@ const handleImagePopup = (title, image) => {
   imagePopUpPhoto.src = image;
 };
 
-const createCardArray = (place, link) => {
+const createCardObject = (place, link) => {
   return {
     place,
     link
@@ -119,7 +119,7 @@ editButton.addEventListener("click", function() {
 });
 
 initialCards.forEach((item) => {
-  cardList.append(createCard(createCardArray(item.place, item.link)))
+  cardList.append(createCard(createCardObject(item.place, item.link)))
 });
 
 formList.forEach((formElement) => {
