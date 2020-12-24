@@ -1,9 +1,9 @@
-class Card {
-  constructor(data, templateSelector, handleImagePopup) {
-    this._title = data.place;
+export default class Card {
+  constructor(data, templateSelector, handleCardClick) {
+    this._title = data.title;
     this._image = data.link;
     this._templateSelector = templateSelector;
-    this._handleImagePopup = handleImagePopup;
+    this._handleCardClick = handleCardClick;
   };
 
   _getCardElement() {
@@ -31,7 +31,7 @@ class Card {
       this._handleDeleteButton(evt);
     });
     this._element.querySelector(".element__photo").addEventListener("click", () => {
-      this._handleImagePopup(this._title, this._image);
+      this._handleCardClick(this._image, this._title);
     });
   };
 
@@ -49,5 +49,3 @@ class Card {
     return this._element;
   };
 };
-
-export default Card;
