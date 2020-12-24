@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>Webpack</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mesto">
+    <meta name="author" content="Владимир Чистый">
+    <title>Mesto</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__user">
+          <img src="<%=require('./images/profile__photo.jpg')%>" alt="Фото профиля" class="profile__photo">
+          <div class="profile__info">
+            <div class="profile__header">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button type="button" class="button button_action_edit" aria-label="Редактировать"></button>
+            </div>
+            <p class="profile__desc">Исследователь океана</p>
+          </div>
+        </div>
+        <button type="button" class="button button_action_add" aria-label="Добавить"></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copy">
+        © 2020 Владимир Чистый
+      </p>
+    </footer>
+    <div class="popup">
+      <form class="modal popup__form" name="profile" novalidate>
+        <div class="popup__container">
+          <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
+          <div class="popup__admin">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <fieldset class="popup__input-container">
+              <input type="text" name="name" class="popup__input" id="name-input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+              <span class="popup__input-error" id="name-input-error"></span>
+              <input type="text" name="job" class="popup__input" id="job-input" placeholder="Ваш род деятельности" minlength="2" maxlength="200" required>
+              <span class="popup__input-error" id="job-input-error"></span>
+            </fieldset>
+            <button type="submit" name="submit" class="popup__button button">Сохранить</button>
+          </div>
+        </div>
+        <div class="popup__overlay"></div>
+      </form>
+      <form class="modal popup__form" name="place" novalidate>
+        <div class="popup__container">
+          <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
+          <div class="popup__admin">
+            <h2 class="popup__heading">Новое место</h2>
+            <fieldset class="popup__input-container">
+              <input type="text" name="title" class="popup__input" id="title-input" placeholder="Название" required>
+              <span class="popup__input-error" id="title-input-error"></span>
+              <input type="url" name="link" class="popup__input" id="link-input" placeholder="Ссылка на картинку" required>
+              <span class="popup__input-error" id="link-input-error"></span>
+            </fieldset>
+            <button type="submit" name="submit" class="popup__button button">Создать</button>
+          </div>
+        </div>
+        <div class="popup__overlay"></div>
+      </form>
+      <div class="popup__image modal">
+        <div class="image-container">
+          <img src="#" alt="#" class="image-container__photo">
+          <h2 class="image-container__title"></h2>
+          <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
+        </div>
+        <div class="popup__overlay"></div>
+      </div>
+    </div>
+    <template class="template template_type_el">
+      <li class="element">
+        <img src="#" alt="#" class="element__photo">
+        <div class="element__desc">
+          <h2 class="element__name"></h2>
+          <button type="button" class="button button_action_like" aria-label="Понравилось"></button>
+        </div>
+        <button type="button" class="button button_action_delete" aria-label="Удалить"></button>
+      </li>
+    </template>
+  </body>
 </html>
