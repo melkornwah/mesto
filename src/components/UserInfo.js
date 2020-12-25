@@ -1,18 +1,18 @@
 export default class UserInfo {
   constructor(data) {
-    this._name = data.name.textContent;
-    this._job = data.job.textContent;
+    this._name = data.name;
+    this._job = data.job;
   }
 
-  getUserInfo(data) {
+  getUserInfo() {
     return this.userData = {
-      name: data.name,
-      job: data.job
+      name: this._name.textContent,
+      job: this._job.textContent
     }
   }
 
-  setUserInfo(formData, data) {
-    data.name.textContent = formData.name;
-    data.job.textContent = formData.job;
+  setUserInfo(formData) {
+    this._name.textContent = formData.name;
+    this._job.textContent = formData.job;
   }
 }

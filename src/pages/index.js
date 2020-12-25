@@ -38,7 +38,7 @@ const placePopup = new PopupWithForm({
 const profilePopup = new PopupWithForm({
   popupSelector: `form[name="profile"]`,
   handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData, userProfile);
+    userInfo.setUserInfo(formData);
   }
 });
 
@@ -49,11 +49,11 @@ const handleCardClick = (image, title) => {
 addButton.addEventListener("click", () => {
   placePopup.open();
 });
-editButton.addEventListener("click", (evt) => {
-  userInfo.getUserInfo(userProfile);
+editButton.addEventListener("click", () => {
+  const userData = userInfo.getUserInfo();
 
-  profileInputs.name.value = userInfo.userData.name.textContent;
-  profileInputs.job.value = userInfo.userData.job.textContent;
+  profileInputs.name.value = userData.name;
+  profileInputs.job.value = userData.job;
 
   profilePopup.open();
 });
