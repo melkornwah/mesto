@@ -18,19 +18,17 @@ const userName = document.querySelector(".profile__name");
 const userJob = document.querySelector(".profile__desc");
 
 export const userProfile = {
-    name: userName,
-    job: userJob
-  }
+  name: userName,
+  job: userJob
+}
 
 const nameInput = document.querySelector("#name-input");
 const jobInput = document.querySelector("#job-input");
 
 export const profileInputs = {
-    name: nameInput,
-    job: jobInput
-  };
-
-export const cardList = document.querySelector(".elements__list");
+  name: nameInput,
+  job: jobInput
+};
 
 export const initialCards = [
   {
