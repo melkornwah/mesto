@@ -45,6 +45,20 @@ const handleCardClick = (image, title) => {
   modal.open(image, title);
 };
 
+const updateProfile = (name, about) => {
+  fetch("https://mesto.nomoreparties.co/v1/cohort-19/users/me", {
+    method: "PATCH",
+    headers: {
+      authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      about: about
+    })
+  });
+}
+
 addButton.addEventListener("click", () => {
   placePopup.open();
 });
