@@ -35,8 +35,11 @@ export default class Card {
     });
   };
 
-  generateCard() {
+  generateCard(counter) {
     this._element = this._getCardElement();
+
+    const cardLikes = this._element.querySelector(".element__like-counter");
+    cardLikes.textContent = counter;
 
     const cardPhoto = this._element.querySelector(".element__photo");
 

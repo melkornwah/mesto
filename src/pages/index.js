@@ -16,9 +16,9 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
-const createCard = (data) => {
+const createCard = (data, counter) => {
   const card = new Card (data, ".template_type_el", handleCardClick);
-  const cardElement = card.generateCard();
+  const cardElement = card.generateCard(counter);
 
   return cardElement;
 };
@@ -34,11 +34,7 @@ const updateProfile = (formData) => {
       name: formData.name,
       about: formData.job
     })
-  })
-    .then(res => res.json())
-    .then((user) => {
-      console.log(user);
-    });
+  });
 };
 
 const postCard = (formData) => {
@@ -52,11 +48,7 @@ const postCard = (formData) => {
       name: formData.title,
       name: formData.link
     })
-    })
-    .then(res => res.json())
-    .then((card) => {
-      console.log(card);
-    });
+  });
 };
 
 const userInfo = new UserInfo(userProfile);
@@ -66,7 +58,7 @@ const modal = new PopupWithImage(".popup__image");
 const placePopup = new PopupWithForm({
   popupSelector: `form[name="place"]`,
   handleFormSubmit: (formData) => {
-    cardList.addItem(createCard(formData));
+    cardList.addItem(createCard(formData, counter));
     postCard(formData);
   }
 });
@@ -123,7 +115,7 @@ fetch("https://mesto.nomoreparties.co/v1/cohort-19/cards", {
     const cardList = new Section({
       items: cards,
       renderer: (item) => {
-        cardList.loadInitial(createCard(item));
+        cardList.loadInitial(createCard(item, item.likes.length));
       }
     },
     ".elements__list"
