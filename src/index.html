@@ -36,7 +36,7 @@
       </p>
     </footer>
     <div class="popup">
-      <form class="modal popup__form" name="profile" novalidate>
+      <form class="popup__form modal" name="profile" novalidate>
         <div class="popup__container">
           <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
           <div class="popup__admin">
@@ -52,7 +52,7 @@
         </div>
         <div class="popup__overlay"></div>
       </form>
-      <form class="modal popup__form" name="place" novalidate>
+      <form class="popup__form modal" name="place" novalidate>
         <div class="popup__container">
           <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
           <div class="popup__admin">
@@ -73,6 +73,16 @@
           <img src="#" alt="#" class="image-container__photo">
           <h2 class="image-container__title"></h2>
           <button type="button" class="button button_action_close" aria-label="Закрыть"></button>
+        </div>
+        <div class="popup__overlay"></div>
+      </div>
+      <div class="popup__delete modal">
+        <div class="popup__container">
+          <button type="button" name="close" class="button button_action_close" aria-label="Закрыть"></button>
+          <div class="popup__admin">
+            <h2 class="popup__heading">Вы уверены?</h2>
+            <button type="submit" name="submit" class="popup__button button">Да</button>
+          </div>
         </div>
         <div class="popup__overlay"></div>
       </div>

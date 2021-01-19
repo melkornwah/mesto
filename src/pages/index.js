@@ -13,11 +13,23 @@ import {
  from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupCardDelete from "../components/PopupCardDelete.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
+const deleteCardPopup = new PopupCardDelete({
+  popupSelector: ".popup__delete",
+  handlePopupSubmit: (card) => {
+
+  }
+})
+
+const handleDeleteClick = () => {
+  deleteCardPopup.open();
+}
+
 const createCard = (data, counter) => {
-  const card = new Card (data, ".template_type_el", handleCardClick);
+  const card = new Card (data, ".template_type_el", handleCardClick, handleDeleteClick);
   const cardElement = card.generateCard(counter);
 
   return cardElement;
@@ -50,6 +62,11 @@ const postCard = (formData) => {
     })
   });
 };
+
+const deleteCard = (card) => {
+  card.remove();
+  card = null;
+}
 
 const userInfo = new UserInfo(userProfile);
 
