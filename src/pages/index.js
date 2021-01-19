@@ -23,6 +23,42 @@ const createCard = (data) => {
   return cardElement;
 };
 
+const updateProfile = (formData) => {
+  fetch("https://mesto.nomoreparties.co/v1/cohort-19/users/me", {
+    method: "PATCH",
+    headers: {
+      authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      about: formData.job
+    })
+  })
+    .then(res => res.json())
+    .then((user) => {
+      console.log(user);
+    });
+};
+
+const postCard = (formData) => {
+  fetch("https://mesto.nomoreparties.co/v1/cohort-19/cards", {
+    method: "POST",
+    headers: {
+      authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.title,
+      name: formData.link
+    })
+    })
+    .then(res => res.json())
+    .then((card) => {
+      console.log(card);
+    });
+};
+
 const userInfo = new UserInfo(userProfile);
 
 const modal = new PopupWithImage(".popup__image");
@@ -31,6 +67,7 @@ const placePopup = new PopupWithForm({
   popupSelector: `form[name="place"]`,
   handleFormSubmit: (formData) => {
     cardList.addItem(createCard(formData));
+    postCard(formData);
   }
 });
 
@@ -38,26 +75,13 @@ const profilePopup = new PopupWithForm({
   popupSelector: `form[name="profile"]`,
   handleFormSubmit: (formData) => {
     userInfo.setUserInfo(formData);
+    updateProfile(formData);
   }
 });
 
 const handleCardClick = (image, title) => {
   modal.open(image, title);
 };
-
-const updateProfile = (name, about) => {
-  fetch("https://mesto.nomoreparties.co/v1/cohort-19/users/me", {
-    method: "PATCH",
-    headers: {
-      authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      about: about
-    })
-  });
-}
 
 addButton.addEventListener("click", () => {
   placePopup.open();
