@@ -7,7 +7,6 @@ import {
   formList,
   editButton,
   addButton,
-  initialCards,
   userProfile,
   profileInputs
 }
@@ -64,17 +63,6 @@ formList.forEach((formElement) => {
   formValidator.enableValidation();
 });
 
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    cardList.loadInitial(createCard(item));
-  }
-},
-".elements__list"
-);
-
-cardList.renderItems();
-
 fetch("https://mesto.nomoreparties.co/v1/cohort-19/users/me", {
   headers: {
     authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b"
@@ -85,4 +73,23 @@ fetch("https://mesto.nomoreparties.co/v1/cohort-19/users/me", {
     userProfile.name.textContent = user.name;
     userProfile.job.textContent = user.about;
     userProfile.avatar.src = user.avatar;
+  });
+
+fetch("https://mesto.nomoreparties.co/v1/cohort-19/cards", {
+  headers: {
+    authorization: "f14a0855-c596-42e6-9cca-cb9c4d82767b"
+  }
+})
+  .then(res => res.json())
+  .then((cards) => {
+    const cardList = new Section({
+      items: cards,
+      renderer: (item) => {
+        cardList.loadInitial(createCard(item));
+      }
+    },
+    ".elements__list"
+    );
+
+    cardList.renderItems();
   });
