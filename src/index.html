@@ -14,7 +14,10 @@
     <main class="content">
       <section class="profile">
         <div class="profile__user">
-          <img src="<%=require('./images/profile__photo.jpg')%>" alt="Фото профиля" class="profile__photo">
+          <button class="button button_action_edit-photo">
+            <img src="<%=require('./images/profile__photo.jpg')%>" alt="Фото профиля" class="profile__photo">
+            <img src="<%=require('./images/btn_edit-photo.png')%>" alt="Кнопка редактирования аватара" class="profile__photo-edit">
+          </button>
           <div class="profile__info">
             <div class="profile__header">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -58,8 +61,8 @@
           <div class="popup__admin">
             <h2 class="popup__heading">Новое место</h2>
             <fieldset class="popup__input-container">
-              <input type="text" name="title" class="popup__input" id="title-input" placeholder="Название" required>
-              <span class="popup__input-error" id="title-input-error"></span>
+              <input type="text" name="name" class="popup__input" id="name-input" placeholder="Название" required>
+              <span class="popup__input-error" id="name-input-error"></span>
               <input type="url" name="link" class="popup__input" id="link-input" placeholder="Ссылка на картинку" required>
               <span class="popup__input-error" id="link-input-error"></span>
             </fieldset>
