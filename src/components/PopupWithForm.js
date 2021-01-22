@@ -9,9 +9,16 @@ export default class PopupWithForm extends Popup {
     this._submitFormButton = this._popupSelector.querySelector(".popup__button");
 
     this._handleSubmit = () => {
-      this._handleFormSubmit(this._getInputValues());
+      const newPromise = new Promise(resolve => {
+        this._handleFormSubmit(this._getInputValues());
 
-      this.close();
+        resolve();
+      })
+
+      newPromise
+        .then(() => {
+          this.close();
+        })
     }
   }
 

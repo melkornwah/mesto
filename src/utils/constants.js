@@ -13,6 +13,7 @@ export const formList = Array.from(document.querySelectorAll(".popup__form"));
 
 export const editButton = document.querySelector(".button_action_edit");
 export const addButton = document.querySelector(".button_action_add");
+export const patchButton = document.querySelector(".button_action_edit-photo");
 
 const userName = document.querySelector(".profile__name");
 const userJob = document.querySelector(".profile__desc");

@@ -7,6 +7,7 @@ import {
   formList,
   editButton,
   addButton,
+  patchButton,
   userProfile,
   profileInputs,
   creator
@@ -38,11 +39,6 @@ const deleteCardPopup = new PopupCardDelete({popupSelector: ".popup__delete"})
 
 const cardList = new Section(".elements__list");
 
-
-
-api.loadInitialCards(cardList, createCard, creator);
-api.getUserInfo(userProfile);
-
 const userInfo = new UserInfo(userProfile);
 
 const modal = new PopupWithImage(".popup__image");
@@ -50,18 +46,79 @@ const modal = new PopupWithImage(".popup__image");
 const placePopup = new PopupWithForm({
   popupSelector: `form[name="place"]`,
   handleFormSubmit: (formData) => {
-    cardList.addItem(createCard(formData, 0, true));
-    api.postCard(formData);
+    api.postCard(formData)
+      .then(res => {
+        cardList.addItem(createCard(res, 0, true));
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 });
+
+const getPopupButton = () => {
+  return document.querySelector(".modal_is-opened").querySelector(".popup__button");
+};
 
 const profilePopup = new PopupWithForm({
   popupSelector: `form[name="profile"]`,
   handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData);
-    api.updateUserInfo(formData);
+    const popupButton = getPopupButton();
+
+    renderLoading(popupButton, () => {
+      userInfo.setUserInfo(formData);
+
+      api.updateUserInfo(formData);
+    });
   }
 });
+
+const profilePhotoPopup = new PopupWithForm({
+  popupSelector: `form[name="profile-photo"]`,
+  handleFormSubmit: (formData) => {
+    setUserAvatar(formData);
+    api.patchAvatar(formData);
+  }
+});
+
+api.loadInitialCards(cardList, createCard, creator);
+api.loadInitialCards()
+  .then(cards => {
+    cards.forEach(card => {
+      cardList.loadInitial(createCard(card, card.likes.length, (card.owner._id === creator)));
+    })
+  })
+  .catch(err => {
+    console.log(err);
+  });
+api.getUserInfo()
+  .then((user) => {
+    userProfile.name.textContent = user.name;
+    userProfile.job.textContent = user.about;
+    userProfile.avatar.src = user.avatar;
+  })
+
+const renderLoading = (button, renderer) => {
+  const buttonText = button.textContent;
+
+  button.textContent = "Сохранение...";
+
+  const newPromise = new Promise(resolve => {
+    renderer();
+
+    resolve();
+  });
+
+  newPromise
+    .then(() => {
+      button.textContent = buttonText;
+    })
+}
+
+
+const setUserAvatar = (formData) => {
+  userProfile.avatar.src = formData.link;
+};
 
 const handleCardClick = (image, title) => {
   modal.open(image, title);
@@ -78,6 +135,9 @@ editButton.addEventListener("click", () => {
 
   profilePopup.open();
 });
+patchButton.addEventListener("click", () => {
+  profilePhotoPopup.open();
+})
 
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(validationConfig, formElement);

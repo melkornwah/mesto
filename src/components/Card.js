@@ -42,11 +42,15 @@ export default class Card {
     evt.target.classList.toggle("button_action_like_active");
 
     if (evt.target.classList.contains("button_action_like_active")) {
-      this._apiRequests.likeCard(this._data);
-      this._addLike(counter);
+      this._apiRequests.likeCard(this._data)
+        .then(() => {
+          this._addLike(counter);
+        })
     } else {
-      this._apiRequests.dislikeCard(this._data);
-      this._dislikeCard(counter);
+      this._apiRequests.dislikeCard(this._data)
+        .then(() => {
+          this._dislikeCard(counter);
+        })
     }
   }
 
