@@ -21,7 +21,7 @@ const userAvatar = document.querySelector(".profile__photo");
 
 export const userProfile = {
   name: userName,
-  job: userJob,
+  about: userJob,
   avatar: userAvatar
 }
 

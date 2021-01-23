@@ -1,13 +1,10 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, deleteCardPopup, apiRequests, creator) {
+  constructor(data, templateSelector, handleCardClick, deleteCardPopup, apiRequests) {
     this._data = data
-    this._title = data.name;
-    this._image = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._deleteCardPopup = deleteCardPopup;
     this._apiRequests = apiRequests;
-    this._creator = creator;
   };
 
   _getCardElement() {
@@ -22,18 +19,10 @@ export default class Card {
     return this._element.querySelector(".element__like-counter");
   }
 
-  _addLike(counter) {
+  _refreshLikes(card) {
     let likeNumber = Number(this._getCardLikesElement().textContent);
 
-    likeNumber = counter + 1;
-
-    this._getCardLikesElement().textContent = likeNumber;
-  }
-
-  _dislikeCard(counter) {
-    let likeNumber = Number(this._getCardLikesElement().textContent);
-
-    likeNumber = counter - 1;
+    likeNumber = card.likes.length;
 
     this._getCardLikesElement().textContent = likeNumber;
   }
@@ -43,13 +32,13 @@ export default class Card {
 
     if (evt.target.classList.contains("button_action_like_active")) {
       this._apiRequests.likeCard(this._data)
-        .then(() => {
-          this._addLike(counter);
+        .then((card) => {
+          this._refreshLikes(card);
         })
     } else {
       this._apiRequests.dislikeCard(this._data)
-        .then(() => {
-          this._dislikeCard(counter);
+        .then((card) => {
+          this._refreshLikes(card);
         })
     }
   }
@@ -70,7 +59,7 @@ export default class Card {
       this.handleDeleteClick();
     });
     cardPhoto.addEventListener("click", () => {
-      this._handleCardClick(this._image, this._title);
+      this._handleCardClick(this._data.link, this._data.name);
     });
   };
 
@@ -86,11 +75,13 @@ export default class Card {
     this._deleteCardPopup.setEventListeners();
   }
 
-  generateCard(counter, creator) {
+  generateCard() {
     this._element = this._getCardElement();
 
     let cardLikes = this._getCardLikesElement();
-    cardLikes.textContent = counter;
+
+    const counter = this._data.likes.length;
+    cardLikes.textContent = this._data.likes.length;
 
     const likeCardButton = this._element.querySelector(".button_action_like");
 
@@ -101,19 +92,18 @@ export default class Card {
             likeCardButton.classList.add("button_action_like_active");
           }
         });
+        if (!(user._id === this._data.owner._id)) {
+          this._element.querySelector(".button_action_delete").remove();
+        }
       })
 
     const cardPhoto = this._element.querySelector(".element__photo");
 
-    this._element.querySelector(".element__name").textContent = this._title;
-    cardPhoto.src = this._image;
-    cardPhoto.alt = this._title;
+    this._element.querySelector(".element__name").textContent = this._data.name;
+    cardPhoto.src = this._data.link;
+    cardPhoto.alt = this._data.name;
 
     this._setEventListeners(cardPhoto, likeCardButton, counter);
-
-    if (!creator) {
-      this._element.querySelector(".button_action_delete").remove();
-    }
 
     return this._element;
   };

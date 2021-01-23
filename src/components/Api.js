@@ -15,6 +15,12 @@ export default class Api {
       })
   }
 
+  getCard() {
+    return this._getRequestResult(`${this._baseURL}/cards`, {
+      headers: this._headers
+    });
+  }
+
   loadInitialCards() {
     return this._getRequestResult(`${this._baseURL}/cards`, {
       headers: this._headers
@@ -71,7 +77,7 @@ export default class Api {
   }
 
   patchAvatar(image) {
-    this._getRequestResult(`${this._baseURL}/users/me/avatar`, {
+    return this._getRequestResult(`${this._baseURL}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({

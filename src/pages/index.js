@@ -46,29 +46,30 @@ const modal = new PopupWithImage(".popup__image");
 const placePopup = new PopupWithForm({
   popupSelector: `form[name="place"]`,
   handleFormSubmit: (formData) => {
-    api.postCard(formData)
+    const popupButton = placePopup.getPopupButton();
+
+    renderLoading(popupButton, () => {
+      api.postCard(formData)
       .then(res => {
         cardList.addItem(createCard(res, 0, true));
       })
       .catch(err => {
         console.log(err);
       })
+    })
   }
 });
-
-const getPopupButton = () => {
-  return document.querySelector(".modal_is-opened").querySelector(".popup__button");
-};
 
 const profilePopup = new PopupWithForm({
   popupSelector: `form[name="profile"]`,
   handleFormSubmit: (formData) => {
-    const popupButton = getPopupButton();
+    const popupButton = profilePopup.getPopupButton();
 
     renderLoading(popupButton, () => {
-      userInfo.setUserInfo(formData);
-
-      api.updateUserInfo(formData);
+      api.updateUserInfo(formData)
+        .then(data => {
+          userInfo.setUserInfo(data);
+        })
     });
   }
 });
@@ -76,16 +77,21 @@ const profilePopup = new PopupWithForm({
 const profilePhotoPopup = new PopupWithForm({
   popupSelector: `form[name="profile-photo"]`,
   handleFormSubmit: (formData) => {
-    setUserAvatar(formData);
-    api.patchAvatar(formData);
+    const popupButton = profilePhotoPopup.getPopupButton();
+
+    renderLoading(popupButton, () => {
+      api.patchAvatar(formData)
+        .then(data => {
+          setUserAvatar(data);
+        })
+    });
   }
 });
 
-api.loadInitialCards(cardList, createCard, creator);
 api.loadInitialCards()
   .then(cards => {
     cards.forEach(card => {
-      cardList.loadInitial(createCard(card, card.likes.length, (card.owner._id === creator)));
+      cardList.loadInitial(createCard(card));
     })
   })
   .catch(err => {
@@ -93,9 +99,7 @@ api.loadInitialCards()
   });
 api.getUserInfo()
   .then((user) => {
-    userProfile.name.textContent = user.name;
-    userProfile.job.textContent = user.about;
-    userProfile.avatar.src = user.avatar;
+    userInfo.setUserInfo(user);
   })
 
 const renderLoading = (button, renderer) => {
@@ -117,7 +121,7 @@ const renderLoading = (button, renderer) => {
 
 
 const setUserAvatar = (formData) => {
-  userProfile.avatar.src = formData.link;
+   userInfo.setUserInfo(formData);
 };
 
 const handleCardClick = (image, title) => {

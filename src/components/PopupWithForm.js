@@ -34,6 +34,10 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  getPopupButton() {
+    return this._popupSelector.querySelector(".popup__button");
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
