@@ -33,7 +33,7 @@ export default class Card {
   _dislikeCard(counter) {
     let likeNumber = Number(this._getCardLikesElement().textContent);
 
-    likeNumber = counter;
+    likeNumber = counter - 1;
 
     this._getCardLikesElement().textContent = likeNumber;
   }
@@ -62,14 +62,14 @@ export default class Card {
     this._deleteCardPopup.removeEventListeners();
   }
 
-  _setEventListeners(cardPhoto, counter) {
-    this._element.querySelector(".button_action_like").addEventListener("click", (evt) => {
+  _setEventListeners(cardPhoto, likeCardButton, counter) {
+    likeCardButton.addEventListener("click", (evt) => {
       this._handleLikeButton(evt, counter);
     });
     this._element.querySelector(".button_action_delete").addEventListener("click", () => {
       this.handleDeleteClick();
     });
-    this._element.querySelector(".element__photo").addEventListener("click", () => {
+    cardPhoto.addEventListener("click", () => {
       this._handleCardClick(this._image, this._title);
     });
   };
@@ -92,13 +92,24 @@ export default class Card {
     let cardLikes = this._getCardLikesElement();
     cardLikes.textContent = counter;
 
+    const likeCardButton = this._element.querySelector(".button_action_like");
+
+    this._apiRequests.getUserInfo()
+      .then((user) => {
+        this._data.likes.forEach(like => {
+          if (like._id === user._id) {
+            likeCardButton.classList.add("button_action_like_active");
+          }
+        });
+      })
+
     const cardPhoto = this._element.querySelector(".element__photo");
 
     this._element.querySelector(".element__name").textContent = this._title;
     cardPhoto.src = this._image;
     cardPhoto.alt = this._title;
 
-    this._setEventListeners(cardPhoto, counter);
+    this._setEventListeners(cardPhoto, likeCardButton, counter);
 
     if (!creator) {
       this._element.querySelector(".button_action_delete").remove();
