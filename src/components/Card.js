@@ -71,7 +71,7 @@ export default class Card {
 
   handleDeleteClick () {
     this._deleteCardPopup.handleSubmit = () => {
-      this._apiRequests.deleteCard(this._data, this._creator)
+      this._apiRequests.deleteCard(this._data)
         .then(() => {
           this._deleteCardElement();
         })
