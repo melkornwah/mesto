@@ -10,7 +10,6 @@ import {
   patchButton,
   userProfile,
   profileInputs,
-  creator
 }
  from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -28,13 +27,6 @@ const api = new Api({
   }
 })
 
-const createCard = (data, counter, creator) => {
-  const card = new Card (data, ".template_type_el", handleCardClick, deleteCardPopup, api, creator);
-  const cardElement = card.generateCard(counter, creator);
-
-  return cardElement;
-};
-
 const deleteCardPopup = new PopupCardDelete({popupSelector: ".popup__delete"})
 
 const cardList = new Section(".elements__list");
@@ -42,6 +34,21 @@ const cardList = new Section(".elements__list");
 const userInfo = new UserInfo(userProfile);
 
 const modal = new PopupWithImage(".popup__image");
+
+api.getUserInfo()
+  .then((user) => {
+    userInfo.setUserInfo(user);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+const createCard = (data, counter, creator) => {
+  const card = new Card (data, ".template_type_el", handleCardClick, deleteCardPopup, api, userInfo);
+  const cardElement = card.generateCard(counter, creator);
+
+  return cardElement;
+};
 
 const placePopup = new PopupWithForm({
   popupSelector: `form[name="place"]`,
@@ -70,6 +77,9 @@ const profilePopup = new PopupWithForm({
         .then(data => {
           userInfo.setUserInfo(data);
         })
+        .catch((err) => {
+          console.log(err);
+        })
     });
   }
 });
@@ -84,6 +94,9 @@ const profilePhotoPopup = new PopupWithForm({
         .then(data => {
           setUserAvatar(data);
         })
+        .catch((err) => {
+          console.log(err);
+        })
     });
   }
 });
@@ -97,10 +110,6 @@ api.loadInitialCards()
   .catch(err => {
     console.log(err);
   });
-api.getUserInfo()
-  .then((user) => {
-    userInfo.setUserInfo(user);
-  })
 
 const renderLoading = (button, renderer) => {
   const buttonText = button.textContent;

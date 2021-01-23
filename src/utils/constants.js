@@ -18,11 +18,13 @@ export const patchButton = document.querySelector(".button_action_edit-photo");
 const userName = document.querySelector(".profile__name");
 const userJob = document.querySelector(".profile__desc");
 const userAvatar = document.querySelector(".profile__photo");
+const userId = "";
 
 export const userProfile = {
   name: userName,
   about: userJob,
-  avatar: userAvatar
+  avatar: userAvatar,
+  id: userId
 }
 
 const nameInput = document.querySelector("#name-input");
